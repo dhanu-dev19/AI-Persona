@@ -1,6 +1,5 @@
 # backend/app/__init__.py
 from flask import Flask
-from flask_migrate import Migrate
 from app.config import config
 from app.models import db, bcrypt
 from app.auth.jwt import jwt
@@ -13,7 +12,10 @@ def create_app(config_name='default'):
     db.init_app(app)
     bcrypt.init_app(app)
     jwt.init_app(app)
-    Migrate(app, db)
+
+    # Comment out Flask-Migrate for now
+    # from flask_migrate import Migrate
+    # Migrate(app, db)
 
     # Register blueprints
     from app.auth import auth_bp
@@ -22,6 +24,6 @@ def create_app(config_name='default'):
     # Health check route
     @app.route('/health')
     def health_check():
-        return jsonify({'status': 'healthy', 'service': 'AI Persona Clone API'})
+        return {'status': 'healthy', 'service': 'AI Persona Clone API'}
 
     return app

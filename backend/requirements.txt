@@ -1,15 +1,16 @@
-# backend/requirements.txt
+# backend/requirements.txt (Updated for Python 3.13 compatibility)
+
 # Web Framework
 flask==2.3.3
 flask-restx==1.1.0
 flask-cors==4.0.0
 python-dotenv==1.0.0
 
-# Database & ORM
+# Database & ORM - Use specific compatible versions
 flask-sqlalchemy==3.0.5
-flask-migrate==4.0.5
+sqlalchemy==2.0.23  # Stick with 2.0.x for now
+#flask-migrate==4.0.5
 psycopg2-binary==2.9.7
-sqlalchemy==2.0.23
 
 # Authentication
 flask-jwt-extended==4.5.3
@@ -20,9 +21,13 @@ bcrypt==4.0.1
 black==23.9.1
 flake8==6.1.0
 pytest==7.4.2
-python-dotenv==1.0.0
 
 # AI/ML (Foundation for later)
-numpy==1.24.3
+numpy==1.26.3
 transformers==4.34.0
 sentence-transformers==2.2.2
+torch==2.6.0  # Add torch for better compatibility
+
+# Add these for SQLAlchemy compatibility
+greenlet==2.0.2
+typing-extensions==4.8.0
